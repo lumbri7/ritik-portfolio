@@ -6,101 +6,137 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #ffffff;
+body.wish-page {
   font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #fff1f5, #ffe6f0);
   color: #222;
-  padding: 20px; /* Removed flex centering to allow scrolling */
+  overflow-x: hidden;
 }
 
-.wrapper {
-  width: 100%;
-  max-width: 800px;
-  background: #fff;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+/* Fairy lights */
+.fairy-lights {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.fairy-lights span {
+  width: 12px;
+  height: 12px;
+  background: #ff4d6d;
+  border-radius: 50%;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* Top section */
+.top-section {
   text-align: center;
-  margin: auto; /* Keeps it centered horizontally */
+  padding: 30px 20px;
 }
 
-.logo {
-  font-size: 3.5rem;
+.animated-text {
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #111;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
-
-  position: sticky; /* Makes it stick to top */
-  top: 0;
-  background: white; /* Match page background */
-  padding: 15px 0;
-  z-index: 1000;
+  animation: pop 1.5s ease-in-out infinite alternate;
 }
 
-.tagline {
-  font-size: 1.4rem;
-  color: #555;
-  margin-bottom: 25px;
+@keyframes pop {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
 }
 
-.info p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 12px 0;
+.message-container {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 1.1rem;
 }
 
-.partner {
-  margin: 30px 0;
-  background: #fef7f9;
-  padding: 20px;
-  border: 1px solid #ff8a00;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Carousel */
+.carousel {
+  overflow: hidden;
+  max-width: 320px;
+  margin: 30px auto;
+  border-radius: 16px;
 }
 
-.partner:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(229, 46, 113, 0.15);
+.carousel-inner {
+  display: flex;
+  animation: slide 24s infinite;
 }
 
-.contact {
+.carousel img {
+  width: 320px;
+  height: 400px;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  12.5% { transform: translateX(-320px); }
+  25% { transform: translateX(-640px); }
+  37.5% { transform: translateX(-960px); }
+  50% { transform: translateX(-1280px); }
+  62.5% { transform: translateX(-1600px); }
+  75% { transform: translateX(-1920px); }
+  87.5% { transform: translateX(-2240px); }
+  100% { transform: translateX(0); }
+}
+
+.cake {
+  font-size: 3rem;
   margin-top: 20px;
 }
 
-.contact h3 {
-  margin-bottom: 10px;
-  font-weight: 600;
+/* Bottom section */
+.bottom-section {
+  text-align: center;
+  padding: 40px 20px;
 }
 
-.contact a {
-  color: #e52e71;
-  text-decoration: none;
-  font-weight: 500;
+.balloons span {
+  font-size: 2rem;
+  animation: float 2s infinite alternate;
 }
 
-.contact a:hover {
-  text-decoration: underline;
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-15px); }
 }
 
-.footer-message {
-  margin-top: 25px;
-  font-size: 1rem;
-  color: #444;
+.cake-msg {
+  margin: 20px 0;
+  font-size: 1.1rem;
 }
 
-.animate-fade {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn 1.5s forwards;
+.cake-emoji {
+  font-size: 3.5rem;
 }
 
-@keyframes fadeIn {
+/* Falling items */
+.fall-item {
+  position: fixed;
+  top: -50px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  z-index: 999;
+}
+
+@keyframes fall {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(110vh);
   }
 }
 
-.highlight {
-  color: #e52e71;
+/* Confetti canvas */
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
 }
