@@ -1,2 +1,2 @@
-# zeweux
-Zeweus Ecommerce Store
+# Ritik's Portfolio
+
